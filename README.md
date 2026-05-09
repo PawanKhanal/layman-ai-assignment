@@ -15,6 +15,12 @@ Computer vision system for analyzing Padel match footage. It detects players, tr
    pip install -r requirements.txt
    ```
 
+## 📹 Video File Placement
+Since large video files are excluded from this repository for performance, please place your match videos in:
+- `data/input_videos/`
+
+You can configure the filename in `configs/default.yaml` or through the `.env` file.
+
 3. **Run Analysis**:
    ```bash
    python src/main.py --config configs/default.yaml
