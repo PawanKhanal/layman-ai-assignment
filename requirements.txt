@@ -7,3 +7,10 @@ matplotlib
 scikit-learn
 filterpy
 python-dotenv
+PyYAML
+pytest
+pytest-cov
+black
+flake8
+isort
+streamlit

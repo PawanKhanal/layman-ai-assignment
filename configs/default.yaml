@@ -1,0 +1,33 @@
+# Padel Shot Classification Configuration
+
+video:
+  input_path: "data/input_videos/input_sample_video.mp4"
+  output_path: "outputs/output_video.mp4"
+  frame_skip: 2
+  resize_factor: 1.0
+  
+detection:
+  player_model: "models/yolov8n.pt"
+  pose_model: "models/yolov8n-pose.pt"
+  confidence_threshold: 0.5
+  iou_threshold: 0.45
+  
+tracking:
+  max_lost_frames: 30
+  min_track_length: 5
+  
+shot_classification:
+  min_racket_speed: 15.0
+  pose_confidence: 0.7
+  shot_buffer_frames: 10
+  
+analytics:
+  generate_json: true
+  generate_csv: true
+  export_timeline: true
+  
+visualization:
+  show_bboxes: true
+  show_pose: true
+  show_shot_text: true
+  font_scale: 0.6

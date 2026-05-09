@@ -1,6 +1,7 @@
 # Virtual Environment
 .venv/
 venv/
+env/
 ENV/
 
 # Python
@@ -26,20 +27,29 @@ wheels/
 .installed.cfg
 *.egg
 
-# Project Specific
-output_video.mp4
-output_results.csv
-output_results.json
-summary.json
+# Video files (Any location)
+*.mp4
+*.avi
+*.mov
+*.mkv
+data/
+outputs/
+
+# Models
 *.pt
-!yolov8m.pt # Keep model if explicitly needed, but usually ignore
+*.pth
+*.onnx
+models/
 
 # Environment variables
 .env
+.env.local
 
 # IDEs
 .vscode/
 .idea/
-inference_sample_video.mp4
-input_sample_video.mp4
+*.swp
 
+# Logs
+*.log
+processing.log

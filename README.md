@@ -1,49 +1,46 @@
-# Padel Game Analytics — Shot Classification System
+# Padel Shot Classification System
 
-## Project Overview
-This project is a Computer Vision prototype designed to analyze Padel gameplay footage. It performs real-time detection and tracking of players, rackets, and the ball, while classifying key shots (Forehand, Backhand, and Smash/Serve).
+Computer vision system for analyzing Padel match footage. It detects players, tracks the ball, and classifies key shots like forehands, backhands, and serves.
 
-## Core Features
-- **Object Detection & Tracking**: Uses YOLOv8 for robust tracking of players, rackets, and balls.
-- **Pose Estimation**: Leverages MediaPipe Pose to analyze player movements during hits.
-- **Shot Classification**: A rule-based system that combines ball trajectory, racket proximity, and player pose to identify shots.
-- **Analytics**: Generates a summary of shot counts and detailed frame-by-frame results in CSV/JSON formats.
+## Quick Start
 
-## Tech Stack
-- **Python 3.8+**
-- **OpenCV**: Video processing and visualization.
-- **YOLOv8 (Ultralytics)**: Object detection and tracking.
-- **MediaPipe**: Pose estimation.
-- **Pandas/NumPy**: Data handling and analysis.
-
-## Setup Instructions
-1. **Clone the repository**:
+1. **Setup Environment**:
    ```bash
-   git clone <repo-url>
-   cd padel-analytics
+   python -m venv .venv
+   source .venv/bin/activate  # Windows: .venv\Scripts\activate
    ```
-2. **Install dependencies**:
+
+2. **Install Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
-3. **Run the analysis**:
+
+3. **Run Analysis**:
    ```bash
-   python main.py --input path/to/video.mp4 --output output_video.mp4
+   python src/main.py --config configs/default.yaml
    ```
 
-## Methodology & Approach
-1. **Detection**: We use a pre-trained YOLOv8 model to detect `person`, `sports ball`, and `tennis racket` classes.
-2. **Hit Detection**: A hit is registered when the ball enters the bounding box of a racket and its velocity vector changes significantly.
-3. **Classification**:
-   - **Smash/Serve**: Identified if the hit occurs above the player's head level.
-   - **Forehand/Backhand**: Determined by the horizontal position of the hit relative to the player's center and pose keypoints.
-4. **Data Export**: All detections are saved to `output_results.csv` and a summary is generated in `summary.json`.
+## Key Features
+- **Object Tracking**: Robust player tracking using YOLOv8.
+- **Pose Estimation**: Joint analysis for identifying shot mechanics.
+- **Shot Classification**: Rule-based logic for identifying Serve, Forehand, and Backhand.
+- **Data Export**: Generates detailed JSON and CSV reports of the match.
 
-## Challenges Faced
-- **Ball Speed**: High-speed balls are often blurred or missed in low FPS videos. We mitigate this using frame-by-frame tracking and proximity thresholds.
-- **Racket Specificity**: Generic "tennis racket" models may sometimes miss Padel-specific rackets. Future improvements would include fine-tuning on a Padel-specific dataset.
+## Project Structure
+- `src/`: Core logic and processing modules.
+- `configs/`: YAML configuration files.
+- `data/`: Input and reference data.
+- `models/`: Pre-trained YOLO and Pose models.
+- `outputs/`: Processed videos and analytical reports.
+
+## Methodology
+The system follows a pipeline approach:
+1. **Player Detection**: YOLOv8 locates players in each frame.
+2. **Pose Analysis**: Extracting keypoints to determine body positioning.
+3. **Collision Detection**: Monitoring ball trajectory relative to players.
+4. **Classification**: Categorizing shots based on swing height and direction.
 
 ## Future Improvements
-- **Kalman Filter**: Implement a Kalman filter for more robust ball tracking through occlusions.
-- **Action Recognition**: Use a 3D-CNN or LSTM on pose sequences for more accurate shot classification beyond simple rules.
-- **Court Mapping**: Detect the court lines to analyze shot placement and bounce detection.
+- Enhanced ball tracking using Kalman Filters.
+- Court line detection for automated score tracking.
+- Integration with a web-based dashboard for match reviews.
