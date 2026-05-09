@@ -1,0 +1,45 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Project Specific
+output_video.mp4
+output_results.csv
+output_results.json
+summary.json
+*.pt
+!yolov8m.pt # Keep model if explicitly needed, but usually ignore
+
+# Environment variables
+.env
+
+# IDEs
+.vscode/
+.idea/
+inference_sample_video.mp4
+input_sample_video.mp4
+

@@ -1,0 +1,9 @@
+ultralytics
+mediapipe
+opencv-python
+pandas
+numpy
+matplotlib
+scikit-learn
+filterpy
+python-dotenv
