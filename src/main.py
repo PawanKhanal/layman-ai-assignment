@@ -62,7 +62,7 @@ def main():
             # 1. Detection
             players = player_det.detect(frame)
             poses = player_det.get_poses(frame, players)
-            ball = ball_track.track(frame)
+            ball = ball_track.track(frame, players=players)
 
             # 2. Classification Logic
             if ball:
@@ -77,14 +77,38 @@ def main():
                         p_center = ((player['bbox'][0] + player['bbox'][2])/2, (player['bbox'][1] + player['bbox'][3])/2)
                         dist = ((p_center[0] - ball_pos[0])**2 + (p_center[1] - ball_pos[1])**2)**0.5
                         
-                        if dist < 100: # Interaction range
-                            # Only classify if the ball is moving (a "hit" event)
-                            min_speed = config['shot_classification'].get('min_ball_speed', 5.0)
-                            if ball.get('velocity', 0) > min_speed:
+                        # Hit Detection: Check for ball-racket interaction
+                        is_hit = False
+                        if 'racket_bbox' in player:
+                            rb = player['racket_bbox']
+                            # Check if ball center is inside or very near racket bbox
+                            if (rb[0]-10 <= ball_pos[0] <= rb[2]+10 and 
+                                rb[1]-10 <= ball_pos[1] <= rb[3]+10):
+                                is_hit = True
+                        else:
+                            # Fallback to proximity if racket not detected
+                            if dist < 60: 
+                                is_hit = True
+
+                        if is_hit:
+                            ball_vel = ball.get('velocity', 0)
+                            # Real shot if speed is sufficient AND movement is somewhat horizontal
+                            # (Filters out vertical hand-bounces)
+                            min_speed = config['shot_classification'].get('min_ball_speed', 25.0)
+                            is_real_shot = ball_vel > min_speed
+                            if len(ball_track.ball_history) >= 2:
+                                p1 = ball_track.ball_history[-2]
+                                p2 = ball_track.ball_history[-1]
+                                dx = abs(p2[0] - p1[0])
+                                dy = abs(p2[1] - p1[1])
+                                if dy > dx * 2: # Mostly vertical movement
+                                    is_real_shot = False
+
+                            if is_real_shot:
                                 shot_type, conf = shot_class.classify(kpts, ball_pos, player['bbox'])
                                 if shot_type != "Unknown":
-                                    stats.add_shot(frame_idx, frame_idx/video_proc.fps, shot_type, player['id'], conf)
-                                    latest_shot = shot_type
+                                    if stats.add_shot(frame_idx, frame_idx/video_proc.fps, shot_type, player['id'], conf):
+                                        latest_shot = shot_type
 
             # 3. Visualization
             annotated_frame = frame.copy()

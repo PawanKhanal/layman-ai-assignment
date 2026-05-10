@@ -2,13 +2,14 @@
 
 video:
   input_path: "data/input_videos/input_sample_video.mp4"
-  output_path: "outputs/output_video.mp4"
+  output_path: "outputs/output_video.avi"
   frame_skip: 2
   resize_factor: 1.0
   start_time: "2024-11-27 22:54:35"
   # ROI: [y_min, x_min, y_max, x_max] as normalized coordinates (0.0 to 1.0)
   # Focusing on the bottom court (ignoring top and left)
-  roi: [0.4, 0.2, 1.0, 1.0] 
+  # ROI: [y_min, x_min, y_max, x_max] to cover all 4 front players
+  roi: [0.1, 0.05, 0.9, 0.95] 
   
 detection:
   player_model: "models/yolov8n.pt"
@@ -23,8 +24,8 @@ tracking:
 shot_classification:
   min_racket_speed: 15.0
   pose_confidence: 0.7
-  shot_buffer_frames: 30
-  min_ball_speed: 20.0 # Pixels per frame
+  shot_buffer_frames: 45
+  min_ball_speed: 25.0 # Pixels per frame
   
 analytics:
   generate_json: true

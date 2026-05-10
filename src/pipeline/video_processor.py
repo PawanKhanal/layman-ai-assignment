@@ -23,7 +23,7 @@ class VideoProcessor:
         self.total_frames = int(self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
         
         # Output setup
-        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        fourcc = cv2.VideoWriter_fourcc(*'XVID')
         out_w = int(self.width * resize_factor)
         out_h = int(cap_get_height * resize_factor)
         self.writer = cv2.VideoWriter(output_path, fourcc, self.fps, (out_w, out_h))

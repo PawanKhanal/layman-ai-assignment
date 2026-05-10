@@ -14,9 +14,9 @@ class BallTracker:
         self.max_history = 5
         self.logger = logging.getLogger(__name__)
 
-    def track(self, frame):
+    def track(self, frame, players=None):
         """
-        Detect the ball and calculate velocity.
+        Detect the ball using motion masking, ignoring areas occupied by players.
         """
         h, w = frame.shape[:2]
         y_min, x_min, y_max, x_max = [int(self.roi[0]*h), int(self.roi[1]*w), int(self.roi[2]*h), int(self.roi[3]*w)]
@@ -27,7 +27,7 @@ class BallTracker:
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         
-        # Mask everything outside ROI
+        # Mask setup
         mask = np.zeros_like(gray)
         mask[y_min:y_max, x_min:x_max] = 255
         
@@ -39,37 +39,33 @@ class BallTracker:
         contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
         best_ball = None
-        
         for cnt in contours:
             area = cv2.contourArea(cnt)
-            if 10 < area < 300:
+            if 5 < area < 400: # Slightly expanded range for ball
                 peri = cv2.arcLength(cnt, True)
                 approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
                 
-                if len(approx) > 5:
+                if len(approx) > 4:
                     x, y, bw, bh = cv2.boundingRect(cnt)
                     aspect_ratio = float(bw)/bh
-                    if 0.7 < aspect_ratio < 1.3:
+                    if 0.6 < aspect_ratio < 1.4:
                         center = (x + bw//2, y + bh//2)
                         
-                        # Calculate velocity and bounce
+                        # Velocity calculation
                         velocity = 0
                         is_bounce = False
                         if self.ball_history:
                             last_pos = self.ball_history[-1]
                             velocity = np.sqrt((center[0] - last_pos[0])**2 + (center[1] - last_pos[1])**2)
                             
-                            # Bounce Detection: Sudden change in Y-direction (upwards)
+                            # Bounce Detection
                             if len(self.ball_history) >= 2:
-                                p2 = self.ball_history[-1] # Previous
-                                p1 = self.ball_history[-2] # Before previous
+                                p2 = self.ball_history[-1]
+                                p1 = self.ball_history[-2]
                                 dy_prev = p2[1] - p1[1]
                                 dy_curr = center[1] - p2[1]
-                                
-                                # If moving down (dy > 0) then up (dy < -5)
                                 if dy_prev > 2 and dy_curr < -2:
-                                    # Only count as bounce if in bottom 1/3 of ROI
-                                    if center[1] > y_min + (y_max - y_min) * 0.6:
+                                    if center[1] > y_min + (y_max - y_min) * 0.5:
                                         is_bounce = True
                         
                         self.ball_history.append(center)

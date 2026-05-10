@@ -33,7 +33,7 @@ wheels/
 *.mov
 *.mkv
 data/
-outputs/
+outputs/output_video.avi
 
 # Models
 *.pt

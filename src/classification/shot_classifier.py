@@ -39,23 +39,24 @@ class ShotClassifier:
         if active_wrist[1] < active_shoulder[1]: 
             return "Smash", 0.85
         
-        # Rule 2: Forehand/Backhand/Serve
-        # We'll use torso position to distinguish sides
+        # Rule 2: Forehand/Backhand
+        # Orientation-aware logic: 
+        # Bottom players (y > 400) face UP. Right of screen = Right side of body.
+        # Top players (y < 400) face DOWN. Right of screen = Left side of body.
         torso_x = (l_shoulder[0] + r_shoulder[0]) / 2
+        is_top_side = player_bbox[1] < 400
         
-        # Simplified: If the ball is very low, it might be a Serve, 
-        # but without point-tracking, we'll focus on Forehand/Backhand.
-        # We'll label low hits based on side.
-        
-        if is_right_dominant:
-            if ball_pos[0] > torso_x:
-                return "Forehand", 0.75
+        # Simplified assumption: Player uses their right hand for most shots
+        # (Or whichever hand is closer to the ball center)
+        if ball_pos[0] > torso_x: # Ball is on the right side of the screen
+            if is_top_side:
+                return "Backhand", 0.75 # Facing us, right of screen is their left
             else:
-                return "Backhand", 0.7
-        else:
-            if ball_pos[0] < torso_x:
-                return "Forehand", 0.75
+                return "Forehand", 0.75 # Facing away, right of screen is their right
+        else: # Ball is on the left side of the screen
+            if is_top_side:
+                return "Forehand", 0.75 # Facing us, left of screen is their right
             else:
-                return "Backhand", 0.7
+                return "Backhand", 0.75 # Facing away, left of screen is their left
 
         return "Unknown", 0.5

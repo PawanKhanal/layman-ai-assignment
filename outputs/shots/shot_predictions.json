@@ -1,0 +1,660 @@
+{
+    "statistics": {
+        "total_shots": 81,
+        "breakdown": {
+            "Forehand": 46,
+            "Backhand": 30,
+            "Smash": 5
+        }
+    },
+    "shots": [
+        {
+            "frame": 14,
+            "timestamp": 0.56,
+            "real_world_time": "2024-11-27 22:54:35",
+            "shot_type": "Forehand",
+            "player_id": 1,
+            "confidence": 0.75
+        },
+        {
+            "frame": 134,
+            "timestamp": 5.36,
+            "real_world_time": "2024-11-27 22:54:40",
+            "shot_type": "Backhand",
+            "player_id": 8,
+            "confidence": 0.75
+        },
+        {
+            "frame": 180,
+            "timestamp": 7.2,
+            "real_world_time": "2024-11-27 22:54:42",
+            "shot_type": "Forehand",
+            "player_id": 8,
+            "confidence": 0.75
+        },
+        {
+            "frame": 232,
+            "timestamp": 9.28,
+            "real_world_time": "2024-11-27 22:54:44",
+            "shot_type": "Backhand",
+            "player_id": 8,
+            "confidence": 0.75
+        },
+        {
+            "frame": 336,
+            "timestamp": 13.44,
+            "real_world_time": "2024-11-27 22:54:48",
+            "shot_type": "Forehand",
+            "player_id": 1,
+            "confidence": 0.75
+        },
+        {
+            "frame": 338,
+            "timestamp": 13.52,
+            "real_world_time": "2024-11-27 22:54:48",
+            "shot_type": "Backhand",
+            "player_id": 8,
+            "confidence": 0.75
+        },
+        {
+            "frame": 412,
+            "timestamp": 16.48,
+            "real_world_time": "2024-11-27 22:54:51",
+            "shot_type": "Forehand",
+            "player_id": 8,
+            "confidence": 0.75
+        },
+        {
+            "frame": 416,
+            "timestamp": 16.64,
+            "real_world_time": "2024-11-27 22:54:51",
+            "shot_type": "Forehand",
+            "player_id": 1,
+            "confidence": 0.75
+        },
+        {
+            "frame": 482,
+            "timestamp": 19.28,
+            "real_world_time": "2024-11-27 22:54:54",
+            "shot_type": "Forehand",
+            "player_id": 1,
+            "confidence": 0.75
+        },
+        {
+            "frame": 488,
+            "timestamp": 19.52,
+            "real_world_time": "2024-11-27 22:54:54",
+            "shot_type": "Backhand",
+            "player_id": 8,
+            "confidence": 0.75
+        },
+        {
+            "frame": 534,
+            "timestamp": 21.36,
+            "real_world_time": "2024-11-27 22:54:56",
+            "shot_type": "Backhand",
+            "player_id": 8,
+            "confidence": 0.75
+        },
+        {
+            "frame": 588,
+            "timestamp": 23.52,
+            "real_world_time": "2024-11-27 22:54:58",
+            "shot_type": "Forehand",
+            "player_id": 8,
+            "confidence": 0.75
+        },
+        {
+            "frame": 664,
+            "timestamp": 26.56,
+            "real_world_time": "2024-11-27 22:55:01",
+            "shot_type": "Forehand",
+            "player_id": 1,
+            "confidence": 0.75
+        },
+        {
+            "frame": 748,
+            "timestamp": 29.92,
+            "real_world_time": "2024-11-27 22:55:04",
+            "shot_type": "Backhand",
+            "player_id": 33,
+            "confidence": 0.75
+        },
+        {
+            "frame": 862,
+            "timestamp": 34.48,
+            "real_world_time": "2024-11-27 22:55:09",
+            "shot_type": "Forehand",
+            "player_id": 1,
+            "confidence": 0.75
+        },
+        {
+            "frame": 1030,
+            "timestamp": 41.2,
+            "real_world_time": "2024-11-27 22:55:16",
+            "shot_type": "Forehand",
+            "player_id": 32,
+            "confidence": 0.75
+        },
+        {
+            "frame": 1102,
+            "timestamp": 44.08,
+            "real_world_time": "2024-11-27 22:55:19",
+            "shot_type": "Backhand",
+            "player_id": 32,
+            "confidence": 0.75
+        },
+        {
+            "frame": 1148,
+            "timestamp": 45.92,
+            "real_world_time": "2024-11-27 22:55:20",
+            "shot_type": "Forehand",
+            "player_id": 32,
+            "confidence": 0.75
+        },
+        {
+            "frame": 1244,
+            "timestamp": 49.76,
+            "real_world_time": "2024-11-27 22:55:24",
+            "shot_type": "Forehand",
+            "player_id": 51,
+            "confidence": 0.75
+        },
+        {
+            "frame": 2472,
+            "timestamp": 98.88,
+            "real_world_time": "2024-11-27 22:56:13",
+            "shot_type": "Forehand",
+            "player_id": 88,
+            "confidence": 0.75
+        },
+        {
+            "frame": 2610,
+            "timestamp": 104.4,
+            "real_world_time": "2024-11-27 22:56:19",
+            "shot_type": "Forehand",
+            "player_id": 88,
+            "confidence": 0.75
+        },
+        {
+            "frame": 2728,
+            "timestamp": 109.12,
+            "real_world_time": "2024-11-27 22:56:24",
+            "shot_type": "Forehand",
+            "player_id": 88,
+            "confidence": 0.75
+        },
+        {
+            "frame": 2984,
+            "timestamp": 119.36,
+            "real_world_time": "2024-11-27 22:56:34",
+            "shot_type": "Forehand",
+            "player_id": 113,
+            "confidence": 0.75
+        },
+        {
+            "frame": 3032,
+            "timestamp": 121.28,
+            "real_world_time": "2024-11-27 22:56:36",
+            "shot_type": "Forehand",
+            "player_id": 113,
+            "confidence": 0.75
+        },
+        {
+            "frame": 3266,
+            "timestamp": 130.64,
+            "real_world_time": "2024-11-27 22:56:45",
+            "shot_type": "Forehand",
+            "player_id": 117,
+            "confidence": 0.75
+        },
+        {
+            "frame": 3282,
+            "timestamp": 131.28,
+            "real_world_time": "2024-11-27 22:56:46",
+            "shot_type": "Smash",
+            "player_id": 119,
+            "confidence": 0.85
+        },
+        {
+            "frame": 3362,
+            "timestamp": 134.48,
+            "real_world_time": "2024-11-27 22:56:49",
+            "shot_type": "Forehand",
+            "player_id": 117,
+            "confidence": 0.75
+        },
+        {
+            "frame": 3408,
+            "timestamp": 136.32,
+            "real_world_time": "2024-11-27 22:56:51",
+            "shot_type": "Backhand",
+            "player_id": 119,
+            "confidence": 0.75
+        },
+        {
+            "frame": 3518,
+            "timestamp": 140.72,
+            "real_world_time": "2024-11-27 22:56:55",
+            "shot_type": "Backhand",
+            "player_id": 124,
+            "confidence": 0.75
+        },
+        {
+            "frame": 3574,
+            "timestamp": 142.96,
+            "real_world_time": "2024-11-27 22:56:57",
+            "shot_type": "Forehand",
+            "player_id": 124,
+            "confidence": 0.75
+        },
+        {
+            "frame": 3630,
+            "timestamp": 145.2,
+            "real_world_time": "2024-11-27 22:57:00",
+            "shot_type": "Forehand",
+            "player_id": 124,
+            "confidence": 0.75
+        },
+        {
+            "frame": 3778,
+            "timestamp": 151.12,
+            "real_world_time": "2024-11-27 22:57:06",
+            "shot_type": "Smash",
+            "player_id": 124,
+            "confidence": 0.85
+        },
+        {
+            "frame": 3946,
+            "timestamp": 157.84,
+            "real_world_time": "2024-11-27 22:57:12",
+            "shot_type": "Forehand",
+            "player_id": 137,
+            "confidence": 0.75
+        },
+        {
+            "frame": 4280,
+            "timestamp": 171.2,
+            "real_world_time": "2024-11-27 22:57:26",
+            "shot_type": "Forehand",
+            "player_id": 149,
+            "confidence": 0.75
+        },
+        {
+            "frame": 4334,
+            "timestamp": 173.36,
+            "real_world_time": "2024-11-27 22:57:28",
+            "shot_type": "Smash",
+            "player_id": 152,
+            "confidence": 0.85
+        },
+        {
+            "frame": 4390,
+            "timestamp": 175.6,
+            "real_world_time": "2024-11-27 22:57:30",
+            "shot_type": "Forehand",
+            "player_id": 154,
+            "confidence": 0.75
+        },
+        {
+            "frame": 4392,
+            "timestamp": 175.68,
+            "real_world_time": "2024-11-27 22:57:30",
+            "shot_type": "Backhand",
+            "player_id": 152,
+            "confidence": 0.75
+        },
+        {
+            "frame": 4552,
+            "timestamp": 182.08,
+            "real_world_time": "2024-11-27 22:57:37",
+            "shot_type": "Backhand",
+            "player_id": 163,
+            "confidence": 0.75
+        },
+        {
+            "frame": 4584,
+            "timestamp": 183.36,
+            "real_world_time": "2024-11-27 22:57:38",
+            "shot_type": "Forehand",
+            "player_id": 164,
+            "confidence": 0.75
+        },
+        {
+            "frame": 4598,
+            "timestamp": 183.92,
+            "real_world_time": "2024-11-27 22:57:38",
+            "shot_type": "Forehand",
+            "player_id": 163,
+            "confidence": 0.75
+        },
+        {
+            "frame": 4630,
+            "timestamp": 185.2,
+            "real_world_time": "2024-11-27 22:57:40",
+            "shot_type": "Forehand",
+            "player_id": 164,
+            "confidence": 0.75
+        },
+        {
+            "frame": 4756,
+            "timestamp": 190.24,
+            "real_world_time": "2024-11-27 22:57:45",
+            "shot_type": "Smash",
+            "player_id": 173,
+            "confidence": 0.85
+        },
+        {
+            "frame": 4862,
+            "timestamp": 194.48,
+            "real_world_time": "2024-11-27 22:57:49",
+            "shot_type": "Backhand",
+            "player_id": 175,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5014,
+            "timestamp": 200.56,
+            "real_world_time": "2024-11-27 22:57:55",
+            "shot_type": "Forehand",
+            "player_id": 179,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5024,
+            "timestamp": 200.96,
+            "real_world_time": "2024-11-27 22:57:55",
+            "shot_type": "Backhand",
+            "player_id": 175,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5052,
+            "timestamp": 202.08,
+            "real_world_time": "2024-11-27 22:57:57",
+            "shot_type": "Backhand",
+            "player_id": 186,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5234,
+            "timestamp": 209.36,
+            "real_world_time": "2024-11-27 22:58:04",
+            "shot_type": "Forehand",
+            "player_id": 190,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5292,
+            "timestamp": 211.68,
+            "real_world_time": "2024-11-27 22:58:06",
+            "shot_type": "Forehand",
+            "player_id": 190,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5444,
+            "timestamp": 217.76,
+            "real_world_time": "2024-11-27 22:58:12",
+            "shot_type": "Forehand",
+            "player_id": 199,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5648,
+            "timestamp": 225.92,
+            "real_world_time": "2024-11-27 22:58:20",
+            "shot_type": "Forehand",
+            "player_id": 206,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5820,
+            "timestamp": 232.8,
+            "real_world_time": "2024-11-27 22:58:27",
+            "shot_type": "Backhand",
+            "player_id": 206,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5910,
+            "timestamp": 236.4,
+            "real_world_time": "2024-11-27 22:58:31",
+            "shot_type": "Forehand",
+            "player_id": 206,
+            "confidence": 0.75
+        },
+        {
+            "frame": 5968,
+            "timestamp": 238.72,
+            "real_world_time": "2024-11-27 22:58:33",
+            "shot_type": "Backhand",
+            "player_id": 206,
+            "confidence": 0.75
+        },
+        {
+            "frame": 6046,
+            "timestamp": 241.84,
+            "real_world_time": "2024-11-27 22:58:36",
+            "shot_type": "Backhand",
+            "player_id": 206,
+            "confidence": 0.75
+        },
+        {
+            "frame": 6124,
+            "timestamp": 244.96,
+            "real_world_time": "2024-11-27 22:58:39",
+            "shot_type": "Backhand",
+            "player_id": 218,
+            "confidence": 0.75
+        },
+        {
+            "frame": 6302,
+            "timestamp": 252.08,
+            "real_world_time": "2024-11-27 22:58:47",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 6362,
+            "timestamp": 254.48,
+            "real_world_time": "2024-11-27 22:58:49",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 6482,
+            "timestamp": 259.28,
+            "real_world_time": "2024-11-27 22:58:54",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 6560,
+            "timestamp": 262.4,
+            "real_world_time": "2024-11-27 22:58:57",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 6698,
+            "timestamp": 267.92,
+            "real_world_time": "2024-11-27 22:59:02",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 6788,
+            "timestamp": 271.52,
+            "real_world_time": "2024-11-27 22:59:06",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 6970,
+            "timestamp": 278.8,
+            "real_world_time": "2024-11-27 22:59:13",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7060,
+            "timestamp": 282.4,
+            "real_world_time": "2024-11-27 22:59:17",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7118,
+            "timestamp": 284.72,
+            "real_world_time": "2024-11-27 22:59:19",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7166,
+            "timestamp": 286.64,
+            "real_world_time": "2024-11-27 22:59:21",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7366,
+            "timestamp": 294.64,
+            "real_world_time": "2024-11-27 22:59:29",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7424,
+            "timestamp": 296.96,
+            "real_world_time": "2024-11-27 22:59:31",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7470,
+            "timestamp": 298.8,
+            "real_world_time": "2024-11-27 22:59:33",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7506,
+            "timestamp": 300.24,
+            "real_world_time": "2024-11-27 22:59:35",
+            "shot_type": "Forehand",
+            "player_id": 287,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7520,
+            "timestamp": 300.8,
+            "real_world_time": "2024-11-27 22:59:35",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7558,
+            "timestamp": 302.32,
+            "real_world_time": "2024-11-27 22:59:37",
+            "shot_type": "Backhand",
+            "player_id": 287,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7568,
+            "timestamp": 302.72,
+            "real_world_time": "2024-11-27 22:59:37",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7634,
+            "timestamp": 305.36,
+            "real_world_time": "2024-11-27 22:59:40",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7680,
+            "timestamp": 307.2,
+            "real_world_time": "2024-11-27 22:59:42",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7732,
+            "timestamp": 309.28,
+            "real_world_time": "2024-11-27 22:59:44",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7808,
+            "timestamp": 312.32,
+            "real_world_time": "2024-11-27 22:59:47",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 7876,
+            "timestamp": 315.04,
+            "real_world_time": "2024-11-27 22:59:50",
+            "shot_type": "Smash",
+            "player_id": 224,
+            "confidence": 0.85
+        },
+        {
+            "frame": 7930,
+            "timestamp": 317.2,
+            "real_world_time": "2024-11-27 22:59:52",
+            "shot_type": "Backhand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 8014,
+            "timestamp": 320.56,
+            "real_world_time": "2024-11-27 22:59:55",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 8066,
+            "timestamp": 322.64,
+            "real_world_time": "2024-11-27 22:59:57",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        },
+        {
+            "frame": 8112,
+            "timestamp": 324.48,
+            "real_world_time": "2024-11-27 22:59:59",
+            "shot_type": "Forehand",
+            "player_id": 224,
+            "confidence": 0.75
+        }
+    ]
+}
