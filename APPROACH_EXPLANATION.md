@@ -32,5 +32,5 @@ If I were to take this system to a production level, I would implement:
 
 ## 4. Model Links
 The models used in this project are standard YOLOv8 pre-trained weights. You can find them here:
-*   **Player & Racket Model (YOLOv8n)**: [https://drive.google.com/drive/folders/1pedc0wXiyHWh5Q5CcVzocpBl9nyNIe0C?usp=sharing]
+*   **Player & Racket Model(YOLOv8n) with screen-record**: [https://drive.google.com/drive/folders/1pedc0wXiyHWh5Q5CcVzocpBl9nyNIe0C?usp=sharing]
 
