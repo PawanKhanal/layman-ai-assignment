@@ -7,10 +7,12 @@ class PlayerDetector:
     """
     Handles player detection using YOLOv8 and pose estimation.
     """
-    def __init__(self, model_path='yolov8n.pt', pose_model_path='yolov8n-pose.pt', conf=0.5):
-        self.model = YOLO(model_path)
-        self.pose_model = YOLO(pose_model_path)
-        self.conf = conf
+    def __init__(self, config):
+        self.config = config
+        self.model = YOLO(config['detection']['player_model'])
+        self.pose_model = YOLO(config['detection']['pose_model'])
+        self.conf = config['detection']['confidence_threshold']
+        self.roi = config['video'].get('roi', [0, 0, 1, 1])
         self.logger = logging.getLogger(__name__)
 
     def detect(self, frame):
@@ -20,17 +22,28 @@ class PlayerDetector:
         results = self.model.track(frame, persist=True, classes=[0], conf=self.conf, verbose=False)
         players = []
         
+        h, w = frame.shape[:2]
+        y_min, x_min, y_max, x_max = [int(self.roi[0]*h), int(self.roi[1]*w), int(self.roi[2]*h), int(self.roi[3]*w)]
+
         if results[0].boxes.id is not None:
             boxes = results[0].boxes.xyxy.cpu().numpy()
             ids = results[0].boxes.id.cpu().numpy().astype(int)
             confs = results[0].boxes.conf.cpu().numpy()
             
             for box, tid, cf in zip(boxes, ids, confs):
-                players.append({
-                    'id': tid,
-                    'bbox': box,
-                    'conf': cf
-                })
+                # ROI check (center of box)
+                cx = (box[0] + box[2]) / 2
+                cy = (box[1] + box[3]) / 2
+                
+                if x_min <= cx <= x_max and y_min <= cy <= y_max:
+                    players.append({
+                        'id': tid,
+                        'bbox': box,
+                        'conf': cf
+                    })
+                else:
+                    # Optional: Log that we ignored a player outside ROI
+                    pass
         return players
 
     def get_poses(self, frame, players):

@@ -26,11 +26,22 @@ You can configure the filename in `configs/default.yaml` or through the `.env` f
    python src/main.py --config configs/default.yaml
    ```
 
+4. **Run with Frame Limit (for testing)**:
+   ```bash
+   python src/main.py --max_frames 500
+   ```
+
 ## Key Features
 - **Object Tracking**: Robust player tracking using YOLOv8.
 - **Pose Estimation**: Joint analysis for identifying shot mechanics.
 - **Shot Classification**: Rule-based logic for identifying Serve, Forehand, and Backhand.
 - **Data Export**: Generates detailed JSON and CSV reports of the match.
+- **ROI Filtering**: Configurable court focus to ignore background matches.
+
+## ⚙️ Configuration & Tuning
+You can tune the system's sensitivity in `configs/default.yaml`:
+- **`shot_buffer_frames`**: Increase this (e.g., to 30) if you are getting too many redundant outputs for one shot.
+- **`roi`**: Adjust this `[y_min, x_min, y_max, x_max]` to focus only on your specific court.
 
 ## Project Structure
 - `src/`: Core logic and processing modules.

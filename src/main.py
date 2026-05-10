@@ -40,13 +40,9 @@ def main():
         resize_factor=config['video']['resize_factor']
     )
     
-    player_det = PlayerDetector(
-        model_path=config['detection']['player_model'],
-        pose_model_path=config['detection']['pose_model'],
-        conf=config['detection']['confidence_threshold']
-    )
+    player_det = PlayerDetector(config)
     
-    ball_track = BallTracker()
+    ball_track = BallTracker(config)
     shot_class = ShotClassifier(config)
     stats = StatisticsManager(cooldown_frames=config['shot_classification'].get('shot_buffer_frames', 30))
     viz = Visualizer(config)
@@ -79,10 +75,13 @@ def main():
                         dist = ((p_center[0] - ball_pos[0])**2 + (p_center[1] - ball_pos[1])**2)**0.5
                         
                         if dist < 100: # Interaction range
-                            shot_type, conf = shot_class.classify(kpts, ball_pos, player['bbox'])
-                            if shot_type != "Unknown":
-                                stats.add_shot(frame_idx, frame_idx/video_proc.fps, shot_type, player['id'], conf)
-                                latest_shot = shot_type
+                            # Only classify if the ball is moving (a "hit" event)
+                            min_speed = config['shot_classification'].get('min_ball_speed', 5.0)
+                            if ball.get('velocity', 0) > min_speed:
+                                shot_type, conf = shot_class.classify(kpts, ball_pos, player['bbox'])
+                                if shot_type != "Unknown":
+                                    stats.add_shot(frame_idx, frame_idx/video_proc.fps, shot_type, player['id'], conf)
+                                    latest_shot = shot_type
 
             # 3. Visualization
             annotated_frame = frame.copy()
