@@ -7,11 +7,20 @@ class StatisticsManager:
     """
     Manages shot counts, statistics, and report generation.
     """
-    def __init__(self, cooldown_frames=30):
+    def __init__(self, cooldown_frames=30, start_time_str=None):
         self.shots = []
         self.cooldown_frames = cooldown_frames
         self.last_shot_frames = {} # player_id -> last_frame_idx
         self.logger = logging.getLogger(__name__)
+        
+        # Real-world time setup
+        self.start_time = None
+        if start_time_str:
+            try:
+                from datetime import datetime
+                self.start_time = datetime.strptime(start_time_str, "%Y-%m-%d %H:%M:%S")
+            except Exception as e:
+                self.logger.warning(f"Could not parse start_time: {e}")
 
     def add_shot(self, frame_idx, timestamp, shot_type, player_id, confidence):
         # Check cooldown
@@ -19,9 +28,17 @@ class StatisticsManager:
             if frame_idx - self.last_shot_frames[player_id] < self.cooldown_frames:
                 return False # Suppress
 
+        # Calculate real world time if start_time is provided
+        real_time_str = "N/A"
+        if self.start_time:
+            from datetime import timedelta
+            shot_time = self.start_time + timedelta(seconds=timestamp)
+            real_time_str = shot_time.strftime("%Y-%m-%d %H:%M:%S")
+
         shot = {
             "frame": int(frame_idx),
             "timestamp": round(float(timestamp), 2),
+            "real_world_time": real_time_str,
             "shot_type": str(shot_type),
             "player_id": int(player_id),
             "confidence": round(float(confidence), 2)

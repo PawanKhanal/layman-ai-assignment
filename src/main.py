@@ -44,7 +44,10 @@ def main():
     
     ball_track = BallTracker(config)
     shot_class = ShotClassifier(config)
-    stats = StatisticsManager(cooldown_frames=config['shot_classification'].get('shot_buffer_frames', 30))
+    stats = StatisticsManager(
+        cooldown_frames=config['shot_classification'].get('shot_buffer_frames', 30),
+        start_time_str=config['video'].get('start_time')
+    )
     viz = Visualizer(config)
 
     logger.info("Starting pipeline processing...")

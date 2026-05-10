@@ -5,6 +5,7 @@ video:
   output_path: "outputs/output_video.mp4"
   frame_skip: 2
   resize_factor: 1.0
+  start_time: "2024-11-27 22:54:35"
   # ROI: [y_min, x_min, y_max, x_max] as normalized coordinates (0.0 to 1.0)
   # Focusing on the bottom court (ignoring top and left)
   roi: [0.4, 0.2, 1.0, 1.0] 
