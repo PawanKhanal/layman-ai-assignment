@@ -17,10 +17,12 @@ class PlayerDetector:
 
     def detect(self, frame):
         """
-        Detect players and return their bounding boxes and track IDs.
+        Detect players and rackets, then return associated objects.
         """
-        results = self.model.track(frame, persist=True, classes=[0], conf=self.conf, verbose=False)
+        # Detect person (0) and tennis racket (38)
+        results = self.model.track(frame, persist=True, classes=[0, 38], conf=self.conf, verbose=False)
         players = []
+        rackets = []
         
         h, w = frame.shape[:2]
         y_min, x_min, y_max, x_max = [int(self.roi[0]*h), int(self.roi[1]*w), int(self.roi[2]*h), int(self.roi[3]*w)]
@@ -29,21 +31,45 @@ class PlayerDetector:
             boxes = results[0].boxes.xyxy.cpu().numpy()
             ids = results[0].boxes.id.cpu().numpy().astype(int)
             confs = results[0].boxes.conf.cpu().numpy()
+            classes = results[0].boxes.cls.cpu().numpy().astype(int)
             
-            for box, tid, cf in zip(boxes, ids, confs):
-                # ROI check (center of box)
-                cx = (box[0] + box[2]) / 2
-                cy = (box[1] + box[3]) / 2
+            for box, tid, cf, cls in zip(boxes, ids, confs, classes):
+                cx, cy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
                 
-                if x_min <= cx <= x_max and y_min <= cy <= y_max:
+                # Only keep objects in ROI
+                if not (x_min <= cx <= x_max and y_min <= cy <= y_max):
+                    continue
+
+                if cls == 0: # Person
                     players.append({
+                        'id': tid,
+                        'bbox': box,
+                        'conf': cf,
+                        'racket_id': None
+                    })
+                elif cls == 38: # Tennis Racket
+                    rackets.append({
                         'id': tid,
                         'bbox': box,
                         'conf': cf
                     })
-                else:
-                    # Optional: Log that we ignored a player outside ROI
-                    pass
+
+        # Associate rackets with players based on proximity
+        for racket in rackets:
+            r_center = ((racket['bbox'][0] + racket['bbox'][2])/2, (racket['bbox'][1] + racket['bbox'][3])/2)
+            best_p = None
+            min_dist = 150 # Max distance to associate racket with hand
+            
+            for player in players:
+                p_center = ((player['bbox'][0] + player['bbox'][2])/2, (player['bbox'][1] + player['bbox'][3])/2)
+                d = np.sqrt((r_center[0] - p_center[0])**2 + (r_center[1] - p_center[1])**2)
+                if d < min_dist:
+                    min_dist = d
+                    best_p = player
+            
+            if best_p:
+                best_p['racket_bbox'] = racket['bbox']
+
         return players
 
     def get_poses(self, frame, players):

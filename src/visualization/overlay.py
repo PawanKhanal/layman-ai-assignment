@@ -28,6 +28,19 @@ class Visualizer:
             return
         center = tuple(map(int, ball['center']))
         cv2.circle(frame, center, 5, self.colors['ball'], -1)
+        
+        # Draw bounce indicator
+        if ball.get('is_bounce'):
+            cv2.putText(frame, "BOUNCE!", (center[0]-40, center[1]-20), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 3)
+            cv2.circle(frame, center, 15, (255, 255, 255), 2)
+
+    def draw_racket(self, frame, player):
+        if 'racket_bbox' in player:
+            rb = player['racket_bbox'].astype(int)
+            cv2.rectangle(frame, (rb[0], rb[1]), (rb[2], rb[3]), (255, 255, 0), 2)
+            cv2.putText(frame, "Racket", (rb[0], rb[1]-5), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 0), 1)
 
     def draw_pose(self, frame, kpts):
         if not self.config['show_pose'] or kpts is None:

@@ -90,6 +90,7 @@ def main():
             annotated_frame = frame.copy()
             for player in players:
                 viz.draw_player(annotated_frame, player)
+                viz.draw_racket(annotated_frame, player)
                 if player['id'] in poses:
                     viz.draw_pose(annotated_frame, poses[player['id']])
             
